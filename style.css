@@ -1,5 +1,16 @@
+body {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 div {
   border: 1px solid black;
+}
+
+.row {
 }
 
 .block {
