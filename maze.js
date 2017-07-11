@@ -39,6 +39,7 @@ Maze.prototype.initialize = function () {
     that.$maze.append($row);  // append to the maze
     row.forEach(function (node, j) {
       let $node = $(`<div class="node node-${j}"></div>`);
+      node.$el = $node; // bind this DOM element to the abstract `Node`
       $row.append($node);
     });
   });
