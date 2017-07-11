@@ -22,16 +22,14 @@ const Maze = function (opt) {
   this.width = opt.width;
   this.height = opt.height;
   this.matrix = new Matrix(this.width, this.height);
-  this.initialize();
+  this.$maze = $('.maze');  // keep reference to DOM element
+  this.initialize();  // setup DOM
 };
 
-Maze.prototype.get()
-
 Maze.prototype.initialize = function () {
-  const $maze = $('.maze');
   for (let i = 0; i < this.height; i++) {
     let $row = $(`<div class="row row-${i}"></div>`);
-    $maze.append($row);
+    this.$maze.append($row);
     for (let j = 0; j < this.width; j++) {
       let $block = $(`<div class="block block-${j} empty"></div>`);
       $row.append($block);

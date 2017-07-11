@@ -4,6 +4,6 @@ let config = {
 }
 
 $(function () {
+  console.log('DOM Loaded.');
   let maze = new Maze(config);
-  maze.initialize();
 });
