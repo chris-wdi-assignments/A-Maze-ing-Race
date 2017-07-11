@@ -13,17 +13,9 @@ div {
 .row {
 }
 
-.block {
+.node {
   display: inline-block;
-  background-color: skyblue;
+  background-color: white;
   height: 2em;
   width: 2em;
-}
-
-.block.empty {
-  background-color: white;
-}
-
-.block.wall {
-  background-color: black;
 }
