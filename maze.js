@@ -44,13 +44,4 @@ Maze.prototype.drawDOM = function () {
       $row.append($node);
     });
   });
-  
-  //for (let i = 0; i < this.height; i++) {
-  //  let $row = $(`<div class="row row-${i}"></div>`);
-  //  this.$maze.append($row);
-  //  for (let j = 0; j < this.width; j++) {
-  //    let $block = $(`<div class="block block-${j} empty"></div>`);
-  //    $row.append($block);
-  //  }
-  //}
 }
