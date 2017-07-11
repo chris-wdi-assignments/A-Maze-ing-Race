@@ -21,6 +21,7 @@ const Matrix = function (width, height) {
     this.grid.push(row);
   }
 }
+
 Matrix.prototype.getRows = function () {
   return this.grid; // array of row arrays
 }
@@ -49,6 +50,12 @@ Maze.prototype.createMazeDOM = function () {
   });
 }
 
-Maze.prototype.generateMaze = function () {
+const rand = (x) => Math.floor(Math.random() * x); // get random int [0,x)
 
+Maze.prototype.generateMaze = function () {
+  let totalNodeCount = this.height * this.width;
+  let currentNode = {
+    'row': rand(this.height),
+    'col': rand(this.width)
+  };
 }
