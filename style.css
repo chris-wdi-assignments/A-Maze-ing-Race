@@ -6,8 +6,9 @@ body {
   box-sizing: border-box;
 }
 
-div {
+td {
   border: 1px solid black;
+  padding: 0px;
 }
 
 table {
@@ -18,7 +19,6 @@ table {
 }
 
 .node {
-  display: inline-block;
   background-color: white;
   height: 2em;
   width: 2em;

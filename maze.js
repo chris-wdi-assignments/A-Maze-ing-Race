@@ -35,11 +35,11 @@ Maze.prototype.drawDOM = function () {
   this.$maze.empty(); // clear it out before drawing new
   const that = this;
   this.matrix.getRows().forEach(function (row, i) {  // each is array of Nodes
-    let $row = $(`<div class="row row-${i}"></div>`); // create div to hold row
+    let $row = $(`<tr class="row row-${i}"></tr>`); // create div to hold row
     console.log('Trying to append', $row, 'to', that.$maze);
     that.$maze.append($row);  // append to the maze
     row.forEach(function (node, j) {
-      let $node = $(`<div class="node node-${j}"></div>`);
+      let $node = $(`<td class="node node-${j}"></td>`);
       node.$el = $node; // bind this DOM element to the abstract `Node`
       $row.append($node);
     });
