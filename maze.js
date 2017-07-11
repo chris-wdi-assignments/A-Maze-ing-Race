@@ -26,8 +26,8 @@ Matrix.prototype.getRows = function () {
 const Maze = function (opt) {
   this.width = opt.width;
   this.height = opt.height;
+  this.$maze = opt.$maze;  // keep reference to DOM element
   this.matrix = new Matrix(this.width, this.height);
-  this.$maze = $('.maze');  // keep reference to DOM element
   this.drawDOM();  // setup DOM
 };
 

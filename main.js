@@ -5,5 +5,6 @@ let config = {
 
 $(function () {
   console.log('DOM Loaded.');
+  config.$maze = $('.maze');
   let maze = new Maze(config);
 });
