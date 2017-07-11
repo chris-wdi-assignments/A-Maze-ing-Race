@@ -1,12 +1,3 @@
-const Node = function () {
-  this.walls = {
-    north: false,
-    east: false,
-    south: false,
-    west: false
-  };
-  this.$el = null;  // later bind DOM element to this node
-}
 
 const Matrix = function (width, height) {
   this.grid = []; // 2d matrix
