@@ -13,7 +13,10 @@ const Matrix = function (width, height) {
   for (let i = 0; i < height; i++) { // first do rows, to match DOM
     let row = [];
     for (let j = 0; j < width; j++) {
-      row.push(new Node());
+      row.push({
+        node: new Node(),
+        wasChecked: false
+      });
     }
     this.grid.push(row);
   }
@@ -25,21 +28,27 @@ Matrix.prototype.getRows = function () {
 const Maze = function (opt) {
   this.width = opt.width;
   this.height = opt.height;
+  this.totalCells = this.width * this.height;
   this.$maze = opt.$maze;  // keep reference to DOM element
   this.matrix = new Matrix(this.width, this.height);
-  this.drawDOM();  // setup DOM
+  this.createMazeDOM();  // setup DOM
+  this.generateMaze();  // randomly generate walls
 };
 
-Maze.prototype.drawDOM = function () {
+Maze.prototype.createMazeDOM = function () {
   this.$maze.empty(); // clear it out before drawing new
   const that = this;
-  this.matrix.getRows().forEach(function (row, i) {  // each is array of Nodes
+  this.matrix.getRows().forEach(function (row, i) {  // each is array of objects
     let $row = $(`<tr class="row row-${i}"></tr>`); // create div to hold row
     that.$maze.append($row);  // append to the maze
-    row.forEach(function (node, j) {
+    row.forEach(function (obj, j) { // obj contains a node
       let $node = $(`<td class="node node-${j}"></td>`);
-      node.$el = $node; // bind this DOM element to the abstract `Node`
+      obj.node.$el = $node; // bind this DOM element to the abstract `Node`
       $row.append($node);
     });
   });
+}
+
+Maze.prototype.generateMaze = function () {
+
 }
