@@ -1,7 +1,7 @@
 const Node = function (row, col) {
   this.row = row; // this is our first coordinate, though not x
   this.col = col; // matrix set up to model DOM, thus y, x
-  this.walls = {  // initialize with all walls in tact
+  this.walls = {  // initialize with all walls intact
     north: true,
     east: true,
     south: true,
