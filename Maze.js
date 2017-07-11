@@ -23,16 +23,20 @@ Maze.prototype.createMazeDOM = function () {
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
   let visitedCount = 0;
-  let currentNode = this.matrix.getRandomNode();
+  let current = this.matrix.getRandomNode();  // actually node wrapper
 //  let currentNode = { // start at a random point, generates better variety
 //    'row': rand(matrix.height),
 //    'col': rand(width.width)
 //  };
   let path = [];
   while (visitedCount < totalNodeCount) { // until we've checked each point
-    let arr = currentNode.neighbors;
-    path.push(currentNode);  // array series of nodes visited
-
+    let neighborsToCheck = [];  // after validation, these nodes will be checked
+    if (!current.wasChecked) {
+      for (let key in current.node.neighbors) {
+        if (current.node.neighbors) neighborsToCheck.push(current.node.neighbors[key]);
+      }
+    }
+    path.push(current);  // array series of nodes visited
 
     // change this, so it doesn't break
     visitedCount++;
