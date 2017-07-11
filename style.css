@@ -7,8 +7,27 @@ body {
 }
 
 td {
-  border: 1px solid black;
   padding: 0px;
+}
+
+td.north-wall {
+  border-top: 2px solid black;
+}
+
+td.east-wall {
+  border-right: 2px solid black;
+}
+
+td.south-wall {
+  border-bottom: 2px solid black;
+}
+
+td.west-wall {
+  border-left: 2px solid black;
+}
+
+td.start-node {
+  background-color: green;
 }
 
 table {
