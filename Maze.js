@@ -24,7 +24,7 @@ Maze.prototype.createMazeDOM = function () {
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
   let currentNode = this.startNode = this.matrix.getRandomNode();
-  let path = [].push(currentNode);
+  let path = [ currentNode ];
   let visitedCount = 1; // before looping, set start point
 
   while (visitedCount < totalNodeCount) { // until we've checked each point
@@ -38,7 +38,10 @@ Maze.prototype.generateMaze = function () {
       let nextNode = neighborsToCheck[rand(neighborsToCheck.length)];
 
       // remove walls between two
-      let relationship = this.matrix.findRelationship(currentNode, nextNode);
+      let relationship = this.matrix.getRelationship(currentNode, nextNode);
+      if (relationship === 'north') {
+        currentNode.walls.north = nextNode.walls.south = false;
+      }
     } else {
       currentNode = path.pop();
     }
