@@ -7,17 +7,22 @@ const Node = function () {
   };
 }
 
-const Maze = function (opt) {
-  this.width = opt.width;
-  this.height = opt.height;
+const Matrix = function (width, height) {
   this.grid = []; // 2d matrix
-  for (let i = 0; i < this.height; i++) { // first do rows, to match DOM
+  for (let i = 0; i < height; i++) { // first do rows, to match DOM
     let row = [];
-    for (let j = 0; j < this.width; j++) {
+    for (let j = 0; j < width; j++) {
       row.push([].push(new Node()));
     }
     this.grid.push(row);
   }
+}
+
+const Maze = function (opt) {
+  this.width = opt.width;
+  this.height = opt.height;
+  this.matrix = new Matrix(this.width, this.height);
+  this.initialize();
 };
 
 Maze.prototype.get()
