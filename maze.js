@@ -1,15 +1,26 @@
+const Node = function () {
+  this.walls = {
+    north: false,
+    east: false,
+    south: false,
+    west: false
+  };
+}
+
 const Maze = function (opt) {
   this.width = opt.width;
   this.height = opt.height;
   this.grid = []; // 2d matrix, true means there is a wall there
-  for (let i = 0; i < this.width; i++) {
-    let col = [];
-    for (let j = 0; j < this.height; j++) {
-      col.push([].push(false));
+  for (let i = 0; i < this.height; i++) {
+    let row = [];
+    for (let j = 0; j < this.width; j++) {
+      row.push([].push(new Node()));
     }
     this.grid.push(col);
   }
 };
+
+Maze.prototype.get()
 
 Maze.prototype.initialize = function () {
   const $maze = $('.maze');
