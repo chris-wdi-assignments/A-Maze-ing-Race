@@ -2,8 +2,6 @@
 
 # Project 0: The Game
 
-**Read this entire document before writing a line of code.**
-
 ### User Story
 
 # User Story for Maze Game
@@ -14,6 +12,14 @@
 4. User presses the W, A, S, and D keys to move their avatar. If the cell in the desired direction is a wall, nothing happens. Else, avatar moves one cell over.
 5. Each time user successfully moves avatar, the game checks if the user has reached the maze endpoint. If they have reached the endpoint, they win. Else, return to step 3.
 Add Comment Collapse
+
+### Reference
+
+I would not have been able to write the maze generation algorithm without
+[this excellent article by David Stromberg](http://dstromberg.com/2013/07/tutorial-random-maze-generation-algorithm-in-javascript/).
+His implementation utilizes a depth-first search algorithm, meaning every
+maze has a solution and there are no loops (i.e. any point in the maze is
+reachable from any other point).
 
 ### Overview
 
