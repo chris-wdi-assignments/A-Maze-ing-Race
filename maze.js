@@ -16,7 +16,7 @@ const Maze = function (opt) {
     for (let j = 0; j < this.width; j++) {
       row.push([].push(new Node()));
     }
-    this.grid.push(col);
+    this.grid.push(row);
   }
 };
 
