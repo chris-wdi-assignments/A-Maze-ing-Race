@@ -5,6 +5,7 @@ const Node = function () {
     south: false,
     west: false
   };
+  this.$el = null;
 }
 
 const Matrix = function (width, height) {
@@ -17,6 +18,9 @@ const Matrix = function (width, height) {
     this.grid.push(row);
   }
 }
+Matrix.prototype.getRows = function () {
+  return this.grid; // array of row arrays
+}
 
 const Maze = function (opt) {
   this.width = opt.width;
@@ -27,6 +31,9 @@ const Maze = function (opt) {
 };
 
 Maze.prototype.initialize = function () {
+  this.Matrix.getRows().forEach(function (row) {  // each is array of Nodes
+
+  })
   for (let i = 0; i < this.height; i++) {
     let $row = $(`<div class="row row-${i}"></div>`);
     this.$maze.append($row);
