@@ -54,8 +54,16 @@ const rand = (x) => Math.floor(Math.random() * x); // get random int [0,x)
 
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.height * this.width;
-  let currentNode = {
+  let visitedCount = 0;
+  let currentNode = { // start at a random point, generates better variety
     'row': rand(this.height),
     'col': rand(this.width)
   };
+  let path = [];
+  while (visitedCount < totalNodeCount) { // until we've checked each point
+    path.push(currentNode);  // array series of nodes visited
+
+    // change this, so it doesn't break
+    visitedCount++;
+  }
 }
