@@ -7,8 +7,8 @@ const Matrix = function (width, height) {
                                 // remember objects are stored in vars as references
   let that = this;
   this.grid.forEach(function (row) {
-    row.forEach(function (nodesParent) {
-      that.allNodesSerialized.push(nodesParent.node);
+    row.forEach(function (node) {
+      that.allNodesSerialized.push(node);
     });
   }); // .allNodesSerialized should now be populated
   this.populateNeighbors(); // link each node to its neighbors
@@ -22,10 +22,7 @@ Matrix.prototype.buildMatrix = function () {
   for (let i = 0; i < this.height; i++) { // first do rows, to match DOM
     let row = [];
     for (let j = 0; j < this.width; j++) {
-      row.push({
-        node: new Node(i, j),
-        wasChecked: false
-      });
+      row.push(new Node(i, j));
     }
     this.grid.push(row);
   }
