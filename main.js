@@ -1,6 +1,6 @@
 let config = {
-  width: 25,
-  height: 15
+  width: 5,
+  height: 5
 }
 
 $(function () {

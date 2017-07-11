@@ -5,7 +5,7 @@ const Node = function () {
     south: false,
     west: false
   };
-  this.$el = null;
+  this.$el = null;  // later bind DOM element to this node
 }
 
 const Matrix = function (width, height) {
@@ -13,12 +13,13 @@ const Matrix = function (width, height) {
   for (let i = 0; i < height; i++) { // first do rows, to match DOM
     let row = [];
     for (let j = 0; j < width; j++) {
-      row.push([].push(new Node()));
+      row.push(new Node());
     }
     this.grid.push(row);
   }
 }
 Matrix.prototype.getRows = function () {
+  console.log(this.grid);
   return this.grid; // array of row arrays
 }
 
@@ -31,15 +32,23 @@ const Maze = function (opt) {
 };
 
 Maze.prototype.initialize = function () {
-  this.Matrix.getRows().forEach(function (row) {  // each is array of Nodes
-
-  })
-  for (let i = 0; i < this.height; i++) {
-    let $row = $(`<div class="row row-${i}"></div>`);
-    this.$maze.append($row);
-    for (let j = 0; j < this.width; j++) {
-      let $block = $(`<div class="block block-${j} empty"></div>`);
-      $row.append($block);
-    }
-  }
+  const that = this;
+  this.matrix.getRows().forEach(function (row, i) {  // each is array of Nodes
+    let $row = $(`<div class="row row-${i}"></div>`); // create div to hold row
+    console.log('Trying to append', $row, 'to', that.$maze);
+    that.$maze.append($row);  // append to the maze
+    row.forEach(function (node, j) {
+      let $node = $(`<div class="node node-${j}"></div>`);
+      $row.append($node);
+    });
+  });
+  
+  //for (let i = 0; i < this.height; i++) {
+  //  let $row = $(`<div class="row row-${i}"></div>`);
+  //  this.$maze.append($row);
+  //  for (let j = 0; j < this.width; j++) {
+  //    let $block = $(`<div class="block block-${j} empty"></div>`);
+  //    $row.append($block);
+  //  }
+  //}
 }
