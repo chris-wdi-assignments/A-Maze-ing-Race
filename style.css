@@ -19,3 +19,11 @@ div {
   height: 2em;
   width: 2em;
 }
+
+.block.empty {
+  background-color: white;
+}
+
+.block.wall {
+  background-color: black;
+}

@@ -17,7 +17,7 @@ Maze.prototype.initialize = function () {
     let $row = $(`<div class="row row-${i}"></div>`);
     $maze.append($row);
     for (let j = 0; j < this.width; j++) {
-      let $block = $(`<div class="block block-${j}"></div>`);
+      let $block = $(`<div class="block block-${j} empty"></div>`);
       $row.append($block);
     }
   }
