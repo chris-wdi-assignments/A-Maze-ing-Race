@@ -4,6 +4,17 @@
 
 **Read this entire document before writing a line of code.**
 
+### User Story
+
+# User Story for Maze Game
+
+1. Game preferences are determined, either by default or user interaction.
+2. User clicks "Start Game" button. Maze is procedurally generated according to preferences. Maze is a rectangular grid of both open cells and walls. Maze has start and end points.
+3. A timer is started, counting down time limit from preferences. When the timer reaches 0, the game is over.
+4. User presses the W, A, S, and D keys to move their avatar. If the cell in the desired direction is a wall, nothing happens. Else, avatar moves one cell over.
+5. Each time user successfully moves avatar, the game checks if the user has reached the maze endpoint. If they have reached the endpoint, they win. Else, return to step 3.
+Add Comment Collapse
+
 ### Overview
 
 Let's start out with something fun - **a game!**
