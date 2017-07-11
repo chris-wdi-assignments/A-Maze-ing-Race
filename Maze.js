@@ -1,9 +1,7 @@
 const Maze = function (opt) {
-  this.width = opt.width;
-  this.height = opt.height;
   this.totalCells = this.width * this.height;
   this.$maze = opt.$maze;  // keep reference to DOM element
-  this.matrix = new Matrix(this.width, this.height);
+  this.matrix = new Matrix(opt.width, opt.height);
   this.createMazeDOM();  // setup DOM
   this.generateMaze();  // randomly generate walls
 };
@@ -22,18 +20,19 @@ Maze.prototype.createMazeDOM = function () {
   });
 }
 
-const rand = (x) => Math.floor(Math.random() * x); // get random int [0,x)
-
 Maze.prototype.generateMaze = function () {
-  let totalNodeCount = this.height * this.width;
+  let totalNodeCount = matrix.height * matrix.width;
   let visitedCount = 0;
-  let currentNode = { // start at a random point, generates better variety
-    'row': rand(this.height),
-    'col': rand(this.width)
-  };
+  let currentNode = matrix.getRandomNode();
+//  let currentNode = { // start at a random point, generates better variety
+//    'row': rand(matrix.height),
+//    'col': rand(width.width)
+//  };
   let path = [];
   while (visitedCount < totalNodeCount) { // until we've checked each point
+    let arr = currentNode.neighbors;
     path.push(currentNode);  // array series of nodes visited
+
 
     // change this, so it doesn't break
     visitedCount++;

@@ -48,3 +48,9 @@ Matrix.prototype.populateNeighbors = function () {
     node.neighbors.west = west || null;
   });
 }
+
+// function rand(max) {}; defined in globals.js
+
+Matrix.prototype.getRandomNode = function () {
+  return this.grid[rand(this.height)][rand(this.width)];
+}
