@@ -1,4 +1,6 @@
 const Matrix = function (width, height) {
+  this.width = width;
+  this.height = height;
   this.grid = []; // 2d matrix
   this.buildMatrix(); // build matrix
   this.allNodesSerialized = []; // all nodes in matrix will be pushed into one array
@@ -17,9 +19,9 @@ Matrix.prototype.getRows = function () {
 }
 
 Matrix.prototype.buildMatrix = function () {
-  for (let i = 0; i < height; i++) { // first do rows, to match DOM
+  for (let i = 0; i < this.height; i++) { // first do rows, to match DOM
     let row = [];
-    for (let j = 0; j < width; j++) {
+    for (let j = 0; j < this.width; j++) {
       row.push({
         node: new Node(i, j),
         wasChecked: false
@@ -32,6 +34,17 @@ Matrix.prototype.buildMatrix = function () {
 Matrix.prototype.populateNeighbors = function () {
   this.allNodesSerialized.forEach(function (node) { // made this arr so we
                                                     // could do this!
-    //
+    // set node.neighbors.north
+    let north = this.grid[node.row - 1][node.col];  // is undefined if top row
+    node.neighbors.north = north || null;
+    // set east
+    let east = this.grid[node.row][node.col + 1];
+    node.neighbors.east = east || null;
+    // set south
+    let south = this.grid[node.row + 1][node.col];
+    node.neighbors.south = south || null;
+    // set west
+    let west = this.grid[node.row][node.col - 1];
+    node.neighbors.west = west || null;
   });
 }
