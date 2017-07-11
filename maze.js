@@ -10,8 +10,8 @@ const Node = function () {
 const Maze = function (opt) {
   this.width = opt.width;
   this.height = opt.height;
-  this.grid = []; // 2d matrix, true means there is a wall there
-  for (let i = 0; i < this.height; i++) {
+  this.grid = []; // 2d matrix
+  for (let i = 0; i < this.height; i++) { // first do rows, to match DOM
     let row = [];
     for (let j = 0; j < this.width; j++) {
       row.push([].push(new Node()));
