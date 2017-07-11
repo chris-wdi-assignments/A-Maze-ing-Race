@@ -1,5 +1,5 @@
 let config = {
-  width: 5,
+  width: 10,
   height: 5
 }
 

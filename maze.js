@@ -19,7 +19,6 @@ const Matrix = function (width, height) {
   }
 }
 Matrix.prototype.getRows = function () {
-  console.log(this.grid);
   return this.grid; // array of row arrays
 }
 
@@ -36,7 +35,6 @@ Maze.prototype.drawDOM = function () {
   const that = this;
   this.matrix.getRows().forEach(function (row, i) {  // each is array of Nodes
     let $row = $(`<tr class="row row-${i}"></tr>`); // create div to hold row
-    console.log('Trying to append', $row, 'to', that.$maze);
     that.$maze.append($row);  // append to the maze
     row.forEach(function (node, j) {
       let $node = $(`<td class="node node-${j}"></td>`);
