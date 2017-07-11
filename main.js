@@ -14,7 +14,6 @@ const keycodes = {
 
 const readKeyboard = function () {
   $(document).on('keypress', function (e) {
-    console.log(e.which);
     if (e.which === keycodes.r) {
       maze = new Maze(config);  // create a new Maze on r
     }
