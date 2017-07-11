@@ -13,6 +13,7 @@ td {
 
 table {
   display: inline-block;
+  border-spacing: 0px;
 }
 
 .row {

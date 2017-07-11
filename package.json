@@ -18,5 +18,8 @@
   "homepage": "https://github.com/chris-wdi-assignments/project-0#readme",
   "devDependencies": {
     "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "normalize.css": "^7.0.0"
   }
 }
