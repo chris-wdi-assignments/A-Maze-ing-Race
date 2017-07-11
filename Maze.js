@@ -21,9 +21,9 @@ Maze.prototype.createMazeDOM = function () {
 }
 
 Maze.prototype.generateMaze = function () {
-  let totalNodeCount = matrix.height * matrix.width;
+  let totalNodeCount = this.matrix.height * this.matrix.width;
   let visitedCount = 0;
-  let currentNode = matrix.getRandomNode();
+  let currentNode = this.matrix.getRandomNode();
 //  let currentNode = { // start at a random point, generates better variety
 //    'row': rand(matrix.height),
 //    'col': rand(width.width)

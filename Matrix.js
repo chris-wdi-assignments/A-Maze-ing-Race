@@ -5,12 +5,12 @@ const Matrix = function (width, height) {
   this.buildMatrix(); // build matrix
   this.allNodesSerialized = []; // all nodes in matrix will be pushed into one array
                                 // remember objects are stored in vars as references
+  let that = this;
   this.grid.forEach(function (row) {
-    row.forEach(function (node) {
-      this.allNodesSerialized.push(node);
+    row.forEach(function (nodesParent) {
+      that.allNodesSerialized.push(nodesParent.node);
     });
   }); // .allNodesSerialized should now be populated
-  return arr;
   this.populateNeighbors(); // link each node to its neighbors
 }
 
@@ -32,20 +32,33 @@ Matrix.prototype.buildMatrix = function () {
 }
 
 Matrix.prototype.populateNeighbors = function () {
+  let that = this;
   this.allNodesSerialized.forEach(function (node) { // made this arr so we
                                                     // could do this!
     // set node.neighbors.north
-    let north = this.grid[node.row - 1][node.col];  // is undefined if top row
-    node.neighbors.north = north || null;
+    if (node.row > 0) { // if not top row
+      node.neighbors.north = that.grid[node.row - 1][node.col];
+    } else {
+      node.neighbors.north = null;
+    }
     // set east
-    let east = this.grid[node.row][node.col + 1];
-    node.neighbors.east = east || null;
+    if (node.col < that.width - 1) {  // if before (<) the edge (this.width-1)
+      node.neighbors.east = that.grid[node.row][node.col + 1];
+    } else {
+      node.neighbors.east = null;
+    }
     // set south
-    let south = this.grid[node.row + 1][node.col];
-    node.neighbors.south = south || null;
+    if (node.row < that.height - 1) {// if before (<) the edge (this.height-1)
+      node.neighbors.south = that.grid[node.row + 1][node.col];
+    } else {
+      node.neighbors.south = null;
+    }
     // set west
-    let west = this.grid[node.row][node.col - 1];
-    node.neighbors.west = west || null;
+    if (node.col > 0) {
+      node.neighbors.west = that.grid[node.row][node.col - 1];
+    } else {
+      node.neighbors.west = null;
+    }
   });
 }
 
