@@ -12,6 +12,13 @@ const keycodes = {
   d: 100
 }
 
+let keybindings = {
+  north: keycodes.w,
+  west: keycodes.a,
+  south: keycodes.s,
+  east: keycodes.d
+}
+
 const readKeyboard = function () {
   $(document).on('keypress', function (e) {
     if (e.which === keycodes.r) {

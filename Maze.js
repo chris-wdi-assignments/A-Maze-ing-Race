@@ -3,6 +3,7 @@ const Maze = function (opt) {
   this.$maze = opt.$maze;  // keep reference to DOM element
   this.matrix = new Matrix(opt.width, opt.height);
   this.createMazeDOM();  // setup DOM
+  this.startNode = null; // pointer to first node
   this.generateMaze();  // randomly generate walls
 };
 
@@ -12,9 +13,9 @@ Maze.prototype.createMazeDOM = function () {
   this.matrix.getRows().forEach(function (row, i) {  // each is array of objects
     let $row = $(`<tr class="row row-${i}"></tr>`); // create div to hold row
     that.$maze.append($row);  // append to the maze
-    row.forEach(function (obj, j) { // obj contains a node
+    row.forEach(function (node, j) {
       let $node = $(`<td class="node node-${j}"></td>`);
-      obj.node.$el = $node; // bind this DOM element to the abstract `Node`
+      node.$el = $node; // bind this DOM element to the abstract `Node`
       $row.append($node);
     });
   });
@@ -22,21 +23,26 @@ Maze.prototype.createMazeDOM = function () {
 
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
-  let visitedCount = 0;
-  let currentNode = this.matrix.getRandomNode();  // actually node wrapper
-//  let currentNode = { // start at a random point, generates better variety
-//    'row': rand(matrix.height),
-//    'col': rand(width.width)
-//  };
-  let path = [];
+  let currentNode = this.startNode = this.matrix.getRandomNode();
+  let path = [].push(currentNode);
+  let visitedCount = 1; // before looping, set start point
+
   while (visitedCount < totalNodeCount) { // until we've checked each point
     let neighborsToCheck = [];  // after validation, these nodes will be checked
-    if (!current.wasChecked) {
+    if (!currentNode.wasChecked) {
       for (let key in currentNode.neighbors) {
         if (currentNode.neighbors) neighborsToCheck.push(currentNode.neighbors[key]);
       }
     }
-    path.push(current);  // array series of nodes visited
+    if (neighborsToCheck.length > 0) {  // if we have neighbors to check
+      let nextNode = neighborsToCheck[rand(neighborsToCheck.length)];
+
+      // remove walls between two
+      let relationship = this.matrix.findRelationship(currentNode, nextNode);
+    } else {
+      currentNode = path.pop();
+    }
+    path.push(currentNode);  // array series of nodes visited
 
     // change this, so it doesn't break
     visitedCount++;
