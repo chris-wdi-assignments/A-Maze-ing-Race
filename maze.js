@@ -28,10 +28,11 @@ const Maze = function (opt) {
   this.height = opt.height;
   this.matrix = new Matrix(this.width, this.height);
   this.$maze = $('.maze');  // keep reference to DOM element
-  this.initialize();  // setup DOM
+  this.drawDOM();  // setup DOM
 };
 
-Maze.prototype.initialize = function () {
+Maze.prototype.drawDOM = function () {
+  this.$maze.empty(); // clear it out before drawing new
   const that = this;
   this.matrix.getRows().forEach(function (row, i) {  // each is array of Nodes
     let $row = $(`<div class="row row-${i}"></div>`); // create div to hold row
