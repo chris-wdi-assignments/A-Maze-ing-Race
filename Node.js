@@ -1,11 +1,11 @@
 const Node = function (row, col) {
   this.row = row; // this is our first coordinate, though not x
   this.col = col; // matrix set up to model DOM, thus y, x
-  this.walls = {
-    north: false,
-    east: false,
-    south: false,
-    west: false
+  this.walls = {  // initialize with all walls in tact
+    north: true,
+    east: true,
+    south: true,
+    west: true
   };
   this.wasChecked = false;  // check if we checked here yet during maze gen
   this.neighbors = {};  // must be initialized by .setNeighbors()
