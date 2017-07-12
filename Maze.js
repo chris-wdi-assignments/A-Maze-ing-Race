@@ -3,7 +3,7 @@ const Maze = function (opt) {
   this.$maze = opt.$maze;  // keep reference to DOM element
   this.matrix = new Matrix(opt.width, opt.height);
   this.createMazeDOM();  // setup DOM
-  this.startNode = null; // pointer to first node
+  this.avatar = null; // pointer to avatar
   this.generateMaze();  // randomly generate walls
 };
 
@@ -23,8 +23,8 @@ Maze.prototype.createMazeDOM = function () {
 
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
-  let currentNode = this.startNode = this.matrix.getRandomNode();
-  this.startNode.$el.addClass('start-node');
+  let currentNode = this.avatar = this.matrix.getRandomNode();
+  this.avatar.$el.addClass('avatar');
   let path = new Array(currentNode);
   let visitedCount = 1; // before looping, set start point
 
