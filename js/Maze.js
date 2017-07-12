@@ -33,7 +33,7 @@ Maze.prototype.generateMaze = function () {
   let visitedCount = 1; // before looping, set start point
 
   let mazeStep = () => { // recursive function, arrow to preserve `this`
-    if (visitedCount >= totalNodeCount) { // maze is finished, clean up
+    if (visitedCount >= totalNodeCount) { // this is actually the end
       currentNode.$el.removeClass('active');
       currentNode.$el.addClass('end-node');
       this.end = currentNode;
@@ -75,6 +75,7 @@ Maze.prototype.generateMaze = function () {
       currentNode = path.pop();
       if (!currentNode) throw new Error('huh?!', currentNode);
     }
+    if (this.delay === 0) mazeStep();
     setTimeout(function () {
       // manage animations
       currentNode.$el.addClass('active');
