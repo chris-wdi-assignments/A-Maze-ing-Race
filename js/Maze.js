@@ -27,6 +27,7 @@ Maze.prototype.createMazeDOM = function () {
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
   let currentNode = this.avatar = this.matrix.getRandomNode();
+  let lastNode = null;  // used for animation
   this.avatar.$el.addClass('avatar active');
   let path = new Array(currentNode);
   let visitedCount = 1; // before looping, set start point
@@ -66,17 +67,20 @@ Maze.prototype.generateMaze = function () {
       // mark the neighbor as visited & set it as current cell
       nextNode.wasChecked = true;
       visitedCount++;
-      currentNode.$el.removeClass('active');
+      lastNode = currentNode;
       currentNode = nextNode;
-      currentNode.$el.addClass('active');
       path.push(currentNode);
     } else {
-      currentNode.$el.removeClass('active');
+      lastNode = currentNode;
       currentNode = path.pop();
-      currentNode.$el.addClass('active');
       if (!currentNode) throw new Error('huh?!', currentNode);
     }
-    setTimeout(mazeStep, this.delay); // recursively call itself
+    setTimeout(function () {
+      // manage animations
+      currentNode.$el.addClass('active');
+      lastNode.$el.removeClass('active');
+      mazeStep();
+    }, this.delay); // recursively call itself
   };
   mazeStep();
 }

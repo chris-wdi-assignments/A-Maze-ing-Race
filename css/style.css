@@ -86,11 +86,10 @@ table {
 
 .node {
   background-color: white;
-  transition: background-color 0.25s;
 }
 
 .node.active {
-  background-color: #555;
+  background-color: red;
 }
 
 .node.end-node {
