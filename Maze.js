@@ -35,7 +35,6 @@ Maze.prototype.generateMaze = function () {
         neighborsToCheck.push(currentNode.neighbors[key]);
       }
     }
-    console.log('neighborsToCheck', neighborsToCheck)
     if (neighborsToCheck.length > 0) {  // if we have neighbors to check
       let nextNode = neighborsToCheck[rand(neighborsToCheck.length)];
 
@@ -74,4 +73,5 @@ Maze.prototype.generateMaze = function () {
       if (!currentNode) throw new Error('huh?!', currentNode);
     }
   }
+  currentNode.$el.addClass('end-node');
 }
