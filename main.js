@@ -1,9 +1,3 @@
-let config = {
-  width: 35,
-  height: 35,
-  delay: 3
-}
-
 const presets = {
   easy: {
     width: 8,
@@ -13,7 +7,7 @@ const presets = {
   medium: {
     width: 16,
     height: 16,
-    delay: 4
+    delay: 5
   },
   difficult: {
     width: 32,
@@ -23,12 +17,12 @@ const presets = {
 }
 
 const keycodes = {
-  r: 114,
+  r: 82,
   space: 32,
-  w: 119,
-  a: 97,
-  s: 115,
-  d: 100
+  w: 87,
+  a: 65,
+  s: 83,
+  d: 68
 }
 
 let keybindings = { // make these user configurable?
@@ -43,7 +37,7 @@ let maze = null;  // global, not set until hit r
 let isPlaying = false;  // also global
 
 const readKeyboard = function (maze) {
-  $(document).on('keypress', function (e) {
+  $(document).on('keydown', function (e) {
     let press = e.which;
     if (press === keybindings.reset) {
       let difficulty = $('input:radio:checked').val().toLowerCase();

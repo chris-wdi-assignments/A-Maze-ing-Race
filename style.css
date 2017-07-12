@@ -44,6 +44,7 @@ ul {
 table {
   display: inline-block;
   border-spacing: 0px;
+  border: 2px solid black;
 }
 
 .row {
