@@ -10,23 +10,23 @@ td {
   padding: 0px;
 }
 
-td.north-wall {
+.node.north-wall {
   border-top: 2px solid black;
 }
 
-td.east-wall {
+.node.east-wall {
   border-right: 2px solid black;
 }
 
-td.south-wall {
+.node.south-wall {
   border-bottom: 2px solid black;
 }
 
-td.west-wall {
+.node.west-wall {
   border-left: 2px solid black;
 }
 
-td.start-node {
+.node.start-node {
   background-color: green;
 }
 
@@ -42,4 +42,10 @@ table {
   background-color: white;
   height: 2em;
   width: 2em;
+  border: 2px solid white;
+  transition: border-color 1s;
+}
+
+.node.end-node {
+  background-color: red;
 }
