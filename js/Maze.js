@@ -48,29 +48,16 @@ Maze.prototype.generateMaze = function () {
 
       // remove walls between two
       let relationship = this.matrix.getRelationship(currentNode, nextNode);
-      if (relationship === 'north') {
-        currentNode.walls.north = false;
-        currentNode.$el.removeClass('north-wall');
-        nextNode.walls.south = false;
-        nextNode.$el.removeClass('south-wall');
-      } else if (relationship === 'east') {
-        currentNode.walls.east = false;
-        currentNode.$el.removeClass('east-wall');
-        nextNode.walls.west = false;
-        nextNode.$el.removeClass('west-wall');
-      } else if (relationship === 'south') {
-        currentNode.walls.south = false;
-        currentNode.$el.removeClass('south-wall');
-        nextNode.walls.north = false;
-        nextNode.$el.removeClass('north-wall');
-      } else if (relationship === 'west') {
-        currentNode.walls.west = false;
-        currentNode.$el.removeClass('west-wall');
-        nextNode.walls.east = false;
-        nextNode.$el.removeClass('east-wall');
-      } else {
-        throw new Error('Huh?!', relationship);
+      let directions = ['north', 'east', 'south', 'west'];
+      for (let i = 0; i < directions.length; i++) {
+        if (relationship === directions[i]) {
+          currentNode.walls[directions[i]] = false;
+          currentNode.$el.removeClass(`${directions[i]}-wall`);
+          nextNode.walls[directions[(i + 2) % 4]] = false;
+          nextNode.$el.removeClass(`${directions[(i + 2) % 4]}-wall`);
+        }
       }
+
       // mark the neighbor as visited & set it as current cell
       nextNode.wasChecked = true;
       visitedCount++;
