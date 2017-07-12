@@ -8,17 +8,17 @@ const presets = {
   easy: {
     width: 8,
     height: 8,
-    delay: 20
+    delay: 18
   },
   medium: {
     width: 16,
     height: 16,
-    delay: 6
+    delay: 4
   },
   difficult: {
     width: 32,
     height: 32,
-    delay: 2
+    delay: 1
   }
 }
 
@@ -49,7 +49,7 @@ const readKeyboard = function (maze) {
       let difficulty = $('input:radio:checked').val().toLowerCase();
       let options = presets[difficulty];
       options.$maze = $('.maze');
-      options.$maze.addClass(difficulty).removeClass('hidden');
+      options.$maze.removeClass('easy medium difficult hidden').addClass(difficulty);
       isPlaying = true; // start game
       $('.victory-message').addClass('hidden');
       maze = new Maze(presets[difficulty]);  // create a new Maze on r
