@@ -84,6 +84,11 @@ table {
   width: 1em;
 }
 
+.ridiculous .node {
+  height: 1em;
+  width: 1em;
+}
+
 .node {
   background-color: white;
 }

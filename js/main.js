@@ -13,6 +13,11 @@ const presets = {
     width: 32,
     height: 32,
     delay: 1
+  },
+  ridiculous: {
+    width: 40,
+    height: 80,
+    delay: 0
   }
 }
 
@@ -43,7 +48,7 @@ const readKeyboard = function (maze) {
       let difficulty = $('input:radio:checked').val().toLowerCase();
       let options = presets[difficulty];
       options.$maze = $('.maze');
-      options.$maze.removeClass('easy medium difficult hidden').addClass(difficulty);
+      options.$maze.removeClass('easy medium difficult ridiculous hidden').addClass(difficulty);
       isPlaying = true; // start game
       $('.victory-message').addClass('hidden');
       maze = new Maze(presets[difficulty]);  // create a new Maze on r
