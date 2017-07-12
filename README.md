@@ -2,7 +2,7 @@
 
 # A-Maze-ing Race
 
-A live version is available [here](https://chris-wdi-assignments.github.io/a-maze-ing-race).
+A live version is available [here](https://chris-wdi-assignments.github.io/A-Maze-ing-Race).
 
 ### User Story
 
