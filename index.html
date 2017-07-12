@@ -22,20 +22,25 @@
       <li><strong>S</strong> moves down</li>
       <li><strong>D</strong> moves right</li>
     </ul>
-    <form>
-      <label>
-        <input type="radio" name="difficulty" value="easy" checked>
-        Easy
-      </label>
-      <label>
-        <input type="radio" name="difficulty" value="medium">
-        Medium
-      </label>
-      <label>
-        <input type="radio" name="difficulty" value="difficult">
-        Difficult
-      </label>
-    </form>
+    <p>
+      <div class="btn">
+        Select Difficulty
+      </div>
+      <form class="hidden">
+        <label>
+          <input type="radio" name="difficulty" value="easy" checked>
+          Easy
+        </label>
+        <label>
+          <input type="radio" name="difficulty" value="medium">
+          Medium
+        </label>
+        <label>
+          <input type="radio" name="difficulty" value="difficult">
+          Difficult
+        </label>
+      </form>
+    </p>
   </header>
 
   <div class="victory-message hidden"><!-- start hidden -->
@@ -46,7 +51,7 @@
   </table>
 
   <footer>
-    <p>What a game! By Chris.</p>
+    <p>Source code hosted on <a href="https://github.com/chris-wdi-assignments/project-0">GitHub</a></p>
   </footer>
 </body>
 </html>

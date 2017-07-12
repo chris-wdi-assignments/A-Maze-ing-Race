@@ -11,8 +11,27 @@ ul {
   padding: 0px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .hidden {
   display: none;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn:hover {
+  text-decoration: underline;
 }
 
 .victory-message {

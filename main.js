@@ -7,7 +7,7 @@ const presets = {
   medium: {
     width: 16,
     height: 16,
-    delay: 5
+    delay: 4
   },
   difficult: {
     width: 32,
@@ -71,4 +71,8 @@ const readKeyboard = function (maze) {
 $(function () {
   console.log('DOM Loaded.');
   readKeyboard();
+  $('.btn').on('click', function () {
+    $(this).addClass('hidden');
+    $('form').removeClass('hidden');
+  })
 });
