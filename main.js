@@ -1,6 +1,6 @@
 let config = {
-  width: 10,
-  height: 5
+  width: 15,
+  height: 15
 }
 
 const keycodes = {
