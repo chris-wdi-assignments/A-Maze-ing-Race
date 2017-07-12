@@ -1,4 +1,5 @@
 const Maze = function (opt) {
+  this.delay = opt.delay; // for animation
   this.totalCells = this.width * this.height;
   this.$maze = opt.$maze;  // keep reference to DOM element
   this.matrix = new Matrix(opt.width, opt.height);
@@ -25,11 +26,17 @@ Maze.prototype.createMazeDOM = function () {
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
   let currentNode = this.avatar = this.matrix.getRandomNode();
-  this.avatar.$el.addClass('avatar');
+  this.avatar.$el.addClass('avatar active');
   let path = new Array(currentNode);
   let visitedCount = 1; // before looping, set start point
 
-  while (visitedCount < totalNodeCount) { // until we've checked each point
+  let mazeStep = () => { // recursive function, arrow to preserve this
+    if (visitedCount >= totalNodeCount) {
+      currentNode.$el.removeClass('active');
+      currentNode.$el.addClass('end-node');
+      this.end = currentNode;
+      return;
+    }
     let neighborsToCheck = [];  // after validation, these nodes will be checked
     for (let key in currentNode.neighbors) {
       if (currentNode.neighbors[key] && !currentNode.neighbors[key].wasChecked) {
@@ -67,13 +74,20 @@ Maze.prototype.generateMaze = function () {
       // mark the neighbor as visited & set it as current cell
       nextNode.wasChecked = true;
       visitedCount++;
+      currentNode.$el.removeClass('active');
       currentNode = nextNode;
+      currentNode.$el.addClass('active');
       path.push(currentNode);
     } else {
+      currentNode.$el.removeClass('active');
       currentNode = path.pop();
+      currentNode.$el.addClass('active');
       if (!currentNode) throw new Error('huh?!', currentNode);
     }
-  }
-  currentNode.$el.addClass('end-node');
-  this.end = currentNode;
+    setTimeout(mazeStep, this.delay); // recursively call itself
+  };
+
+  mazeStep();
 }
+
+

@@ -1,6 +1,25 @@
 let config = {
   width: 35,
-  height: 35
+  height: 35,
+  delay: 3
+}
+
+const presets = {
+  easy: {
+    width: 8,
+    height: 8,
+    delay: 20
+  },
+  medium: {
+    width: 16,
+    height: 16,
+    delay: 6
+  },
+  difficult: {
+    width: 32,
+    height: 32,
+    delay: 2
+  }
 }
 
 const keycodes = {
@@ -27,10 +46,13 @@ const readKeyboard = function (maze) {
   $(document).on('keypress', function (e) {
     let press = e.which;
     if (press === keybindings.reset) {
+      let difficulty = $('input:radio:checked').val().toLowerCase();
+      let options = presets[difficulty];
+      options.$maze = $('.maze');
+      options.$maze.addClass(difficulty).removeClass('hidden');
       isPlaying = true; // start game
       $('.victory-message').addClass('hidden');
-      $('.maze').removeClass('hidden'); // show if hidden
-      maze = new Maze(config);  // create a new Maze on r
+      maze = new Maze(presets[difficulty]);  // create a new Maze on r
     }
     if (maze && isPlaying) { // if no maze, we don't care
       ['north', 'east', 'south', 'west'].forEach(function (direction) {
@@ -54,6 +76,5 @@ const readKeyboard = function (maze) {
 
 $(function () {
   console.log('DOM Loaded.');
-  config.$maze = $('.maze');
   readKeyboard();
 });

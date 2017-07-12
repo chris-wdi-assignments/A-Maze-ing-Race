@@ -6,6 +6,10 @@ body {
   box-sizing: border-box;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .hidden {
   display: none;
 }
@@ -44,12 +48,29 @@ table {
 .row {
 }
 
-.node {
-  background-color: white;
+.easy .node {
+  height: 4em;
+  width: 4em;
+}
+
+.medium .node {
+  height: 2em;
+  width: 2em;
+}
+
+.difficult .node {
   height: 1em;
   width: 1em;
+}
+
+.node {
+  background-color: white;
   border: 2px solid white;
-  transition: border-color 1s;
+  transition: background-color 0.25s;
+}
+
+.node.active {
+  background-color: #555;
 }
 
 .node.end-node {
