@@ -30,12 +30,12 @@ Maze.prototype.generateMaze = function () {
   let path = new Array(currentNode);
   let visitedCount = 1; // before looping, set start point
 
-  let mazeStep = () => { // recursive function, arrow to preserve this
-    if (visitedCount >= totalNodeCount) {
+  let mazeStep = () => { // recursive function, arrow to preserve `this`
+    if (visitedCount >= totalNodeCount) { // maze is finished, clean up
       currentNode.$el.removeClass('active');
       currentNode.$el.addClass('end-node');
       this.end = currentNode;
-      return;
+      return; // exit out of recursive functions
     }
     let neighborsToCheck = [];  // after validation, these nodes will be checked
     for (let key in currentNode.neighbors) {
@@ -86,7 +86,6 @@ Maze.prototype.generateMaze = function () {
     }
     setTimeout(mazeStep, this.delay); // recursively call itself
   };
-
   mazeStep();
 }
 

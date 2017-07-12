@@ -62,7 +62,7 @@ Matrix.prototype.populateNeighbors = function () {
 // function rand(max) {}; defined in globals.js
 
 Matrix.prototype.getRandomNode = function () {
-  return this.grid[rand(this.height)][rand(this.width)];
+  return this.allNodesSerialized[rand(allNodesSerialized.length)];
 }
 
 Matrix.prototype.getRelationship = function (node1, node2) {
