@@ -6,8 +6,12 @@ body {
   box-sizing: border-box;
 }
 
-td {
-  padding: 0px;
+.hidden {
+  display: none;
+}
+
+.victory-message {
+  font-size: 100px;
 }
 
 .node.north-wall {

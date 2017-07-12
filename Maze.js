@@ -4,6 +4,7 @@ const Maze = function (opt) {
   this.matrix = new Matrix(opt.width, opt.height);
   this.createMazeDOM();  // setup DOM
   this.avatar = null; // pointer to avatar
+  this.end = null;  // pointer to the goal
   this.generateMaze();  // randomly generate walls
 };
 
@@ -74,4 +75,5 @@ Maze.prototype.generateMaze = function () {
     }
   }
   currentNode.$el.addClass('end-node');
+  this.end = currentNode;
 }

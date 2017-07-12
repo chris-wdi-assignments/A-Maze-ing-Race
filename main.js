@@ -21,14 +21,18 @@ let keybindings = { // make these user configurable?
 }
 
 let maze = null;  // global, not set until hit r
+let isPlaying = false;  // also global
 
 const readKeyboard = function (maze) {
   $(document).on('keypress', function (e) {
     let press = e.which;
     if (press === keybindings.reset) {
+      isPlaying = true; // start game
+      $('.victory-message').addClass('hidden');
+      $('.maze').removeClass('hidden'); // show if hidden
       maze = new Maze(config);  // create a new Maze on r
     }
-    if (maze) { // if no maze, we don't care
+    if (maze && isPlaying) { // if no maze, we don't care
       ['north', 'east', 'south', 'west'].forEach(function (direction) {
         if (press === keybindings[direction] && !maze.avatar.walls[direction]) {
           // check if we moved in this direction and no wall there
@@ -36,6 +40,12 @@ const readKeyboard = function (maze) {
           maze.avatar.$el.removeClass('avatar');
           maze.avatar = maze.avatar.neighbors[direction];
           maze.avatar.$el.addClass('avatar');
+
+          if (maze.avatar === maze.end) { // victory!
+            $('.maze').addClass('hidden');
+            $('.victory-message').removeClass('hidden');
+            isPlaying = false;
+          }
         }
       })
     }
