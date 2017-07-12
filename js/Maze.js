@@ -40,14 +40,18 @@ Maze.prototype.generateMaze = function () {
     let neighborsToCheck = [];  // after validation, these nodes will be checked
     for (let key in currentNode.neighbors) {
       if (currentNode.neighbors[key] && !currentNode.neighbors[key].wasChecked) {
-        neighborsToCheck.push(currentNode.neighbors[key]);
+        neighborsToCheck.push({
+          relationship: key,
+          neighbor: currentNode.neighbors[key]
+        });
       }
     }
     if (neighborsToCheck.length > 0) {  // if we have neighbors to check
-      let nextNode = neighborsToCheck[rand(neighborsToCheck.length)];
+      let temp = neighborsToCheck[rand(neighborsToCheck.length)];
+      let nextNode = temp.neighbor;
+      let relationship = temp.relationship;
 
       // remove walls between two
-      let relationship = this.matrix.getRelationship(currentNode, nextNode);
       let directions = ['north', 'east', 'south', 'west'];
       for (let i = 0; i < directions.length; i++) {
         if (relationship === directions[i]) {

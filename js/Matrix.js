@@ -64,17 +64,3 @@ Matrix.prototype.populateNeighbors = function () {
 Matrix.prototype.getRandomNode = function () {
   return this.allNodesSerialized[rand(this.allNodesSerialized.length)];
 }
-
-Matrix.prototype.getRelationship = function (node1, node2) {
-  if (node1.neighbors.north === node2) {
-    return 'north';
-  } else if (node1.neighbors.east === node2) {
-    return 'east';
-  } else if (node1.neighbors.south === node2) {
-    return 'south';
-  } else if (node1.neighbors.west === node2) {
-    return 'west';
-  } else {
-    throw new Error('Huh?!', node1, node2);
-  }
-}
