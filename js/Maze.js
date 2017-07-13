@@ -14,9 +14,9 @@ Maze.prototype.createMazeDOM = function () {
   this.d3Maze.html(''); // empty it out first
   const that = this;
   this.matrix.getRows().forEach(function (row, i) {  // each is array of objects
-    let d3Row = that.d3Maze.append('tr').classed(`row row-${i}`, true); // create row, append
+    let d3Row = that.d3Maze.append('tr').classed('row', true); // create row, append
     row.forEach(function (node, j) {
-      let d3Element = d3Row.append('td').classed(`node north-wall east-wall south-wall west-wall`, true);
+      let d3Element = d3Row.append('td').classed('node north-wall east-wall south-wall west-wall', true);
       node.d3Element = d3Element; // bind this DOM element to the abstract `Node`
     });
   });
