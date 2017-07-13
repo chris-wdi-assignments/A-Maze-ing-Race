@@ -75,14 +75,6 @@ Maze.prototype.generateMaze = function () {
       currentNode = path.pop();
       if (!currentNode) throw new Error('huh?!', currentNode);
     }
-    /*
-    setTimeout(function () {
-      // manage animations
-      currentNode.$el.addClass('active');
-      lastNode.$el.removeClass('active');
-      mazeStep();
-    }, this.delay); // recursively call itself
-    */
   };
   //set up dummy so first iteration works
   let lastNode = {
