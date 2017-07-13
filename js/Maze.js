@@ -27,13 +27,13 @@ Maze.prototype.createMazeDOM = function () {
 Maze.prototype.generateMaze = function () {
   let totalNodeCount = this.matrix.height * this.matrix.width;
   let currentNode = this.avatar = this.matrix.getRandomNode();
-  let lastNode = null;  // used for animation
   this.avatar.$el.addClass('avatar active');
   let path = new Array(currentNode);
   let visitedCount = 1; // before looping, set start point
 
   let mazeStep = () => { // recursive function, arrow to preserve `this`
     if (visitedCount >= totalNodeCount) { // this is actually the end
+      clearInterval(intervalId);
       currentNode.$el.removeClass('active');
       currentNode.$el.addClass('end-node');
       this.end = currentNode;
@@ -75,15 +75,30 @@ Maze.prototype.generateMaze = function () {
       currentNode = path.pop();
       if (!currentNode) throw new Error('huh?!', currentNode);
     }
-    if (this.delay === 0) mazeStep();
+    /*
     setTimeout(function () {
       // manage animations
       currentNode.$el.addClass('active');
       lastNode.$el.removeClass('active');
       mazeStep();
     }, this.delay); // recursively call itself
+    */
   };
-  mazeStep();
+  //set up dummy so first iteration works
+  let lastNode = {
+    $el: {
+      removeClass: () => null
+    }
+  };  // used for animation
+  // intervalId is global, defined in global.js
+  if (intervalId) clearInterval(intervalId);  // clear previous interval if
+                                              // exists
+  intervalId = setInterval(function () {
+    //manage animations
+    currentNode.$el.addClass('active');
+    lastNode.$el.removeClass('active');
+    mazeStep();
+  }, this.delay)
 }
 
 

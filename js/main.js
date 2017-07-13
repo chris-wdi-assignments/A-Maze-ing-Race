@@ -42,7 +42,9 @@ let maze = null;  // global, not set until hit r
 let isPlaying = false;  // also global
 
 const readKeyboard = function (maze) {
+  //d3.selection.addEventListener('keydown', function (e) {
   $(document).on('keydown', function (e) {
+  //$('.yoloDawg').on('keydown', function (e) {
     let press = e.which;
     if (press === keybindings.reset) {
       let difficulty = $('input:radio:checked').val().toLowerCase();
