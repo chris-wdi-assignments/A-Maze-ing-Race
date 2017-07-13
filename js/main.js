@@ -71,11 +71,11 @@ const readKeyboard = function (maze) {
   });
 };
 
-window.onload = function () {
+window.addEventListener('load', function () {
   console.log('DOM Loaded.');
   readKeyboard();
   document.getElementsByClassName('btn')[0].addEventListener('click', function (e) {
     d3.select(this).classed('hidden', true);
     d3.select('form').classed('hidden', false);
   });
-};
+});
