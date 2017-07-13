@@ -45,7 +45,7 @@ const readKeyboard = function (maze) {
   document.documentElement.addEventListener('keydown', function (e) {
     let press = e.which;
     if (press === keybindings.reset) {
-      let difficulty = $('input:radio:checked').val().toLowerCase();
+      let difficulty = d3.select('input[type="radio"]:checked').attr('value').toLowerCase();
       let options = presets[difficulty];
       options.d3Maze = d3.select('.maze');
       options.d3Maze.classed('easy medium difficult ridiculous hidden', false).classed(difficulty, true);
