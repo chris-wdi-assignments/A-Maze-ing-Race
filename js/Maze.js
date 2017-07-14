@@ -13,6 +13,14 @@ const Maze = function (opt) {
 Maze.prototype.createMazeDOM = function () {
   this.d3Maze.html(''); // empty it out first
   const that = this;
+  /* this is testing d3 data-binding 
+  let demrows = this.matrix.getRows();
+  let demrow = this.d3Maze.data(demrows).enter().append('tr').classed('row', true);
+  let demnode = demrow.selectAll('td').data(function (node) {
+    console.log(this);
+    return node;
+  }).enter().append('td').classed('node north-wall east-wall south-wall west-wall', true).text((x) => 'yolo!');
+  */
   this.matrix.getRows().forEach(function (row, i) {  // each is array of objects
     let d3Row = that.d3Maze.append('tr').classed('row', true); // create row, append
     row.forEach(function (node, j) {
