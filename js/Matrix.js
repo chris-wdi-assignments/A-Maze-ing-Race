@@ -1,8 +1,7 @@
 const Matrix = function (width, height) {
   this.width = width;
   this.height = height;
-  this.grid = []; // 2d matrix
-  this.buildMatrix(); // build matrix
+  this.grid = this.buildMatrix(this.width, this.height); // build matrix
   this.allNodesSerialized = []; // all nodes in matrix will be pushed into one array
                                 // remember objects are stored in vars as references
   let that = this;
@@ -18,14 +17,16 @@ Matrix.prototype.getRows = function () {
   return this.grid; // array of row arrays
 }
 
-Matrix.prototype.buildMatrix = function () {
-  for (let i = 0; i < this.height; i++) { // first do rows, to match DOM
+Matrix.prototype.buildMatrix = function (width, height) {
+  let grid = [];
+  for (let i = 0; i < height; i++) { // first do rows, to match DOM
     let row = [];
-    for (let j = 0; j < this.width; j++) {
+    for (let j = 0; j < width; j++) {
       row.push(new Node(i, j));
     }
-    this.grid.push(row);
+    grid.push(row);
   }
+  return grid;
 }
 
 Matrix.prototype.populateNeighbors = function () {
