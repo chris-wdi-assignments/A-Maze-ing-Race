@@ -41,9 +41,10 @@ Maze.prototype.generateMaze = function () {
     if (visitedCount > totalNodeCount) { // this is actually the end
       clearInterval(intervalId);
       currentNode.d3Element.classed('active', false);
-      currentNode.d3Element.classed('end-node', true);
-      this.end = currentNode;
+      this.end.d3Element.classed('end-node', true);
       return; // exit out of recursive functions
+    } else if (visitedCount === Math.ceil(0.5 * totalNodeCount)) {
+      this.end = currentNode;  // don't draw yet, but mark as end
     }
     let neighborsToCheck = [];  // after validation, these nodes will be checked
     for (let key in currentNode.neighbors) {
