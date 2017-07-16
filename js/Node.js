@@ -7,6 +7,10 @@ const Node = function (row, col) {
     south: true,
     west: true
   };
+  this.state = {
+    wasChecked: false,
+    isActive: false
+  };
   this.wasChecked = false;  // check if we checked here yet during maze gen
   this.neighbors = {};  // must be initialized by .setNeighbors()
   this.d3Element = null;   // later bind DOM element to this Node

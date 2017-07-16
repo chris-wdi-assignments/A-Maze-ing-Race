@@ -2,7 +2,7 @@ const Matrix = function (width, height) {
   this.width = width;
   this.height = height;
   this.grid = this.buildMatrix(this.width, this.height); // build matrix
-  this.allNodesSerialized = []; // all nodes in matrix will be pushed into one array
+  this.allNodesSerialized = []; // keep references to all nodes in matrix
                                 // remember objects are stored in vars as references
   let that = this;
   this.grid.forEach(function (row) {

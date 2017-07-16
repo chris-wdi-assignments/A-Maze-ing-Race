@@ -24,7 +24,7 @@ Maze.prototype.createMazeDOM = function () {
   this.matrix.getRows().forEach(function (row, i) {  // each is array of objects
     let d3Row = that.d3Maze.append('tr').classed('row', true); // create row, append
     row.forEach(function (node, j) {
-      let d3Element = d3Row.append('td').classed('node north-wall east-wall south-wall west-wall', true);
+      let d3Element = d3Row.append('td').classed('node north-wall east-wall south-wall west-wall unvisited', true);
       node.d3Element = d3Element; // bind this DOM element to the abstract `Node`
     });
   });
@@ -38,7 +38,7 @@ Maze.prototype.generateMaze = function () {
   let visitedCount = 1; // before looping, set start point
 
   let mazeStep = () => { // recursive function, arrow to preserve `this`
-    if (visitedCount >= totalNodeCount) { // this is actually the end
+    if (visitedCount > totalNodeCount) { // this is actually the end
       clearInterval(intervalId);
       currentNode.d3Element.classed('active', false);
       currentNode.d3Element.classed('end-node', true);
@@ -66,7 +66,7 @@ Maze.prototype.generateMaze = function () {
           currentNode.walls[directions[i]] = false;
           currentNode.d3Element.classed(`${directions[i]}-wall`, false);
           nextNode.walls[directions[(i + 2) % 4]] = false;
-          nextNode.d3Element.classed(`${directions[(i + 2) % 4]}-wall`, false);
+          nextNode.d3Element.classed(`${directions[(i + 2) % 4]}-wall unvisited`, false);
         }
       }
 

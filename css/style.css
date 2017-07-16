@@ -38,6 +38,14 @@ a:hover {
   font-size: 100px;
 }
 
+.node {
+  background-color: white;
+}
+
+.node.unvisited {
+  background-color: black;
+}
+
 .node.north-wall {
   border-top: 2px solid black;
 }
@@ -87,10 +95,6 @@ table {
 .ridiculous .node {
   height: 1em;
   width: 1em;
-}
-
-.node {
-  background-color: white;
 }
 
 .node.active {
