@@ -13,14 +13,6 @@
 </head>
 <body>
   <header>
-    <h1>My Great Game!</h1>
-    <p>Press <strong>R</strong> to create a new maze.</p>
-    <ul>
-      <li><strong>W</strong> moves up</li>
-      <li><strong>A</strong> moves left</li>
-      <li><strong>S</strong> moves down</li>
-      <li><strong>D</strong> moves right</li>
-    </ul>
     <p>
       <div class="btn">
         Select Difficulty
@@ -52,6 +44,20 @@
 
   <table class="maze hidden">
   </table>
+
+  <section class="controls">
+    <div>
+      <button class="north" tabindex="-1">↑</button>
+    </div>
+    <div>
+      <button class="west" tabindex="-1">←</button>
+      <button class="reload" tabindex="-1">↻</button>
+      <button class="east" tabindex="-1">→</button>
+    </div>
+    <div>
+      <button class="south" tabindex="-1">↓</button>
+    </div>
+  </section>
 
   <footer>
     <p>Source code hosted on <a href="https://github.com/chris-wdi-assignments/project-0">GitHub</a></p>

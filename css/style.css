@@ -20,6 +20,15 @@ a:hover {
   text-decoration: underline;
 }
 
+btn {
+  font-family: monospace;
+}
+
+.controls { // wrapper for control buttons
+  display: inline-block;
+  user-select: none;
+}
+
 .hidden {
   display: none !important;
 }
@@ -35,7 +44,7 @@ a:hover {
 }
 
 .victory-message {
-  font-size: 100px;
+  font-size: 4em;
 }
 
 .node {
@@ -47,23 +56,30 @@ a:hover {
 }
 
 .node.north-wall {
-  border-top: 2px solid black;
+  border-top: 1px solid black;
 }
 
 .node.east-wall {
-  border-right: 2px solid black;
+  border-right: 1px solid black;
 }
 
 .node.south-wall {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
 
 .node.west-wall {
-  border-left: 2px solid black;
+  border-left: 1px solid black;
 }
 
 .node.avatar {
   background-color: green;
+  overflow: hidden;
+}
+
+.node.avatar:after {
+/*
+ * content: "💩";
+ */
 }
 
 table {
