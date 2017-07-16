@@ -8,10 +8,9 @@ const Node = function (row, col) {
     west: true
   };
   this.state = {
-    wasChecked: false,
+    wasChecked: false,  // check if we checked here yet during maze gen
     isActive: false
   };
-  this.wasChecked = false;  // check if we checked here yet during maze gen
   this.neighbors = {};  // must be initialized by .setNeighbors()
   this.d3Element = null;   // later bind DOM element to this Node
 }

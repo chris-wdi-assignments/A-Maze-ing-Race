@@ -47,7 +47,7 @@ Maze.prototype.generateMaze = function () {
     }
     let neighborsToCheck = [];  // after validation, these nodes will be checked
     for (let key in currentNode.neighbors) {
-      if (currentNode.neighbors[key] && !currentNode.neighbors[key].wasChecked) {
+      if (currentNode.neighbors[key] && !currentNode.neighbors[key].state.wasChecked) {
         neighborsToCheck.push({
           relationship: key,
           neighbor: currentNode.neighbors[key]
@@ -71,7 +71,7 @@ Maze.prototype.generateMaze = function () {
       }
 
       // mark the neighbor as visited & set it as current cell
-      nextNode.wasChecked = true;
+      nextNode.state.wasChecked = true;
       visitedCount++;
       lastNode = currentNode;
       currentNode = nextNode;
