@@ -37,7 +37,7 @@ Maze.prototype.generateMaze = function () {
   let path = new Array(currentNode);
   let visitedCount = 1; // before looping, set start point
 
-  let mazeStep = () => { // recursive function, arrow to preserve `this`
+  let mazeStep = () => { // arrow to preserve `this`
     if (visitedCount > totalNodeCount) { // this is actually the end
       clearInterval(intervalId);
       currentNode.d3Element.classed('active', false);
@@ -90,8 +90,7 @@ Maze.prototype.generateMaze = function () {
     }
   };  // used for animation
   // intervalId is global, defined in global.js
-  if (intervalId) clearInterval(intervalId);  // clear previous interval if
-                                              // exists
+  if (intervalId) clearInterval(intervalId);  // clear previous interval if exists
   intervalId = setInterval(function () {
     //manage animations
     currentNode.d3Element.classed('active', true);

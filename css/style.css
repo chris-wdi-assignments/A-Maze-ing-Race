@@ -39,7 +39,7 @@ a:hover {
 }
 
 .node {
-  background-color: white;
+  background-color: inherit;
 }
 
 .node.unvisited {
