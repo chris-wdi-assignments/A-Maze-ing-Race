@@ -62,8 +62,6 @@ a:hover {
   border-left: 2px solid black;
 }
 
-.node.start-node {}
-
 .node.avatar {
   background-color: green;
 }
@@ -93,8 +91,8 @@ table {
 }
 
 .ridiculous .node {
-  height: 1em;
-  width: 1em;
+  height: 0.675em;
+  width: 0.675em;
 }
 
 .node.active {

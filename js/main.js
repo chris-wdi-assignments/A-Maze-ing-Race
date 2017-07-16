@@ -15,8 +15,8 @@ const presets = {
     delay: 1
   },
   ridiculous: {
-    width: 40,
-    height: 80,
+    width: 70,
+    height: 45,
     delay: 0
   }
 }
